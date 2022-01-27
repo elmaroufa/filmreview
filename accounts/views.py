@@ -26,8 +26,9 @@ def signupaccount(request):
         else:
             return render(request, 'signupaccount.html', 
              {'form':UserCreateForm, 'error':'Passwords do not match'})
+             
 
-
+@login_required
 def logoutaccount(request):        
     logout(request)
     return redirect('home')
