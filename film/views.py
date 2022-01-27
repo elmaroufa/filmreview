@@ -46,3 +46,23 @@ def createreview(request, film_id):
             {'form' : form, 'error' : 'bad data passed in' })
 
 
+def updatereview(request, review_id):
+    review = get_object_or_404(Review, pk=review_id, user=request.user)
+    if request.method =='GET':
+        form = ReviewForm(instance=review)
+        return render(request, 'updatereview.html',
+                      {'review': review,'form':form})
+    else:
+        try:
+            form = ReviewForm(request.POST, instance=review)
+            form.save()
+            return redirect('detail', review.film.id)            
+        except ValueError:
+            return render(request, 'updatereview.html',
+             {'review': review,'form':form,'error':'Bad data in form'})
+
+def deletereview(request, review_id):
+    review = get_object_or_404(Review, pk=review_id, user=request.user)
+    review.delete()
+    return redirect('detail', review.film.id)   
+

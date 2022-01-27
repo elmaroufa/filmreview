@@ -16,11 +16,11 @@
             </a>
           {% endif %}
           {% if user.is_authenticated %}
-            <a href="{% url 'createreview' film.id %}"
+          <a href="{% url 'createreview' film.id %}"
               class="btn btn-primary">
               Add Review
-            </a>
-          {% endif %}
+          </a>
+          {% endif %}   
         </p>
         <hr />
         <h3>Reviews</h3>
@@ -35,8 +35,8 @@
             </h6>
             <p class="card-text">{{ review.text }}</p>
         {% if user.is_authenticated and user == review.user %}
-            <a class="btn btn-primary me-2">Edit</a>
-            <a class="btn btn-danger">Delete</a>
+            <a class="btn btn-primary me-2" href="{% url 'updatereview' review.id %}">Edit</a>
+            <a href="{% url 'deletereview' review.id %}" class="btn btn-danger">Delete</a>
             {% endif %}
           </li>
         {% endfor %}
