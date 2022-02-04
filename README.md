@@ -28,6 +28,6 @@ You can use it to start with django.
  **1.** `python3 -m django startproject 'namefolderproject'` and cd folder project </br>
  **2.** `python3 manage.py runserver` <br>
  **3.**  `python3 manage.py makemigrations` <br>
- **4.** `python manage.py migrate` <br><br>
+ **4.** `python3 manage.py migrate` <br><br>
  
  ##YOUPI :kissing_closed_eyes: it's over , start project.
